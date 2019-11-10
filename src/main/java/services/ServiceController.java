@@ -16,7 +16,7 @@ public class ServiceController {
 
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
-    private static Random rd = new Random();
+
 
     //    http://localhost:8080,
     @CrossOrigin
@@ -54,17 +54,36 @@ public class ServiceController {
     @RequestMapping(value = RestAPIConstants.GET_KEY, method = RequestMethod.GET)
     @ResponseBody
     public Response generateKey() {
-        int x = Math.abs(rd.nextInt());
+        Model.getInstance().genPrivateKey();
         Response response = new Response();
         response.setStatus(true);
-        response.setMessage(Integer.toString(x));
+        response.setMessage(Model.getInstance().getPrivateKey());
         return response;
     }
 
     @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST, value=RestAPIConstants.CHECKIN_ID)
+    @RequestMapping(method = RequestMethod.POST, value=RestAPIConstants.STUDENT_CHECKIN)
     @ResponseBody
-    public Response studentCheckin(@RequestBody String studentId) {
+    public Response studentCheckin(@RequestBody String studentIdAndKey) {
+        Response response = new Response();
+        response.setStatus(false);
+        String[] ss = studentIdAndKey.split("\\?");
+        if (ss.length == 2) {
+            boolean ok = Model.getInstance().isMatchedKey(ss[1]);
+            if (ok) {
+                response.setStatus(Model.getInstance().getDummySession().setAttendant(ss[0], true));
+            }
+        }
+        if ( response.isStatus() ) response.setMessage("You are HERE");
+        else response.setMessage("You are NOT here");
+
+        return response;
+    }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST, value=RestAPIConstants.PROF_CHECKIN)
+    @ResponseBody
+    public Response ProfCheckin(@RequestBody String studentId) {
         Response response = new Response();
         boolean added = Model.getInstance().getDummySession().setAttendant(studentId, true);
         response.setStatus(added);

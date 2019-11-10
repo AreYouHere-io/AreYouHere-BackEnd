@@ -4,13 +4,12 @@ import config.Configuration;
 
 import java.io.*;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class Model {
 	private static Model instance = null;
+	private static Random rd = new Random();
+	private String privateKey = "";
 
 	Set<Class> classes;
 	Set<Student> students;
@@ -20,6 +19,14 @@ public class Model {
 			instance = new Model();
 		}
 		return instance;
+	}
+
+	public void genPrivateKey()  {
+		privateKey =  Integer.toString(Math.abs(rd.nextInt()));
+	}
+
+	public String getPrivateKey() {
+		return privateKey;
 	}
 
 	public Set<Class> getClasses() {
@@ -159,5 +166,9 @@ public class Model {
 //		for(Student s : newSession.attendants.keySet()) {
 //			thisSession.attendants.put(s, newSession.attendants.get(s));
 //		}
+	}
+
+	public boolean isMatchedKey(String key) {
+		return privateKey.equals(key);
 	}
 }
