@@ -40,6 +40,7 @@ http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/student/checkin
 method = POST
 
 value = "/prof/checkin"
+Body : "txt999999"
 
 http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/prof/checkin
 
