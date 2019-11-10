@@ -1,4 +1,4 @@
-# AreYouHere-WebService
+# AreYouHere-BackEnd (Server)
 Server Link:
 
 http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/
@@ -44,10 +44,3 @@ Body : "txt999999"
 
 http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/prof/checkin
 
-## API6
-
-method = GET
-
-value = "/session/reset"
-
-http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/session/reset
