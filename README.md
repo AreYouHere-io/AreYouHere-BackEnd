@@ -33,7 +33,7 @@ value = "/student/checkin"
 
 Body: "txt999999?privateKey"
 
-http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com//student/checkin
+http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/student/checkin
 
 ## API5
 
@@ -41,7 +41,7 @@ method = POST
 
 value = "/prof/checkin"
 
-http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com//prof/checkin
+http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/prof/checkin
 
 ## API6
 
