@@ -29,13 +29,21 @@ http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/session/dump
 
 method = POST
 
-value = "/checkin"
+value = "/student/checkin"
 
-Body: "txt999999"
+Body: "txt999999?privateKey"
 
-http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/checkin
+http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/student/checkin
 
-## API 5
+## API5
+
+method = POST
+
+value = "/prof/checkin"
+
+http://complete.se43jvv6ep.us-west-2.elasticbeanstalk.com/prof/checkin
+
+## API6
 
 method = GET
 
